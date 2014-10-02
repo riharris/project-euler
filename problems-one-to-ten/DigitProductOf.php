@@ -7,7 +7,7 @@ include_once 'Number.php';
  * @author Richard Harrison
  * @since 2 Oct 2014
  */
-class DigitProduct
+class DigitProductOf
 {
 
     /**
