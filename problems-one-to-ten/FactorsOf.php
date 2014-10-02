@@ -1,5 +1,5 @@
 <?php
-include_once 'LargestLikelyFactorOf.php';
+include_once 'LargestPossibleFactorOf.php';
 include_once 'Number.php';
 
 /**
@@ -40,10 +40,7 @@ class FactorsOf implements Iterator
         
         sort($values);
         
-        $this->iterator = new ArrayIterator(array_unique(array_filter($values, array(
-            $this,
-            'isLessThanOrEqualToLargestFactorSought'
-        ))));
+        $this->iterator = new ArrayIterator($values);
     }
     /*
      * (non-PHPdoc)
@@ -129,15 +126,5 @@ class FactorsOf implements Iterator
         }
         
         return $output;
-    }
-
-    /**
-     *
-     * @param Number $number            
-     * @return boolean
-     */
-    protected function isLessThanOrEqualToLargestFactorSought(Number $number)
-    {
-        return (bccomp($number, $this->highestFactorSought) <= 0) ? true : false;
     }
 }
