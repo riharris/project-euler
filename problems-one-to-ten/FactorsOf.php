@@ -9,4 +9,12 @@ include_once 'AbstractFactorsOf.php';
  */
 class FactorsOf extends AbstractFactorsOf
 {
+    /*
+     * (non-PHPdoc)
+     * @see AbstractFactorsOf::isValid()
+     */
+    protected function isValid($value)
+    {
+        return true;
+    }
 }

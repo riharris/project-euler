@@ -1,6 +1,6 @@
 <?php
-
 include_once 'AbstractFactorsOf.php';
+include_once 'Number.php';
 
 /**
  * Contains the PrimeFactorsOf class
@@ -10,7 +10,17 @@ include_once 'AbstractFactorsOf.php';
  */
 class PrimeFactorsOf extends AbstractFactorsOf
 {
-
-
-
+    /*
+     * (non-PHPdoc)
+     * @see AbstractFactorsOf::isValid()
+     */
+    protected function isValid($value)
+    {
+        /**
+         * @var Number $number
+         */
+        $number = new Number($value);
+        
+        return $number->isPrime();
+    }
 }

@@ -38,6 +38,11 @@ abstract class AbstractFactorsOf implements Iterator
             $values = array_merge($values, $pair);
         }
         
+        $values = array_filter($values, array(
+            $this,
+            'isValid'
+        ));
+        
         sort($values);
         
         $this->iterator = new ArrayIterator($values);
@@ -127,4 +132,10 @@ abstract class AbstractFactorsOf implements Iterator
         
         return $output;
     }
+
+    /**
+     *
+     * @param string $value            
+     */
+    abstract protected function isValid($value);
 }
