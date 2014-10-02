@@ -1,5 +1,6 @@
 <?php
 include_once 'Number.php';
+include_once 'NumberAbstract.php';
 
 /**
  * Contains the DigitProduct class
@@ -7,23 +8,8 @@ include_once 'Number.php';
  * @author Richard Harrison
  * @since 2 Oct 2014
  */
-class DigitProductOf
+class DigitProductOf extends NumberAbstract
 {
-
-    /**
-     *
-     * @var Number
-     */
-    protected $number;
-
-    /**
-     *
-     * @param Number $number            
-     */
-    public function __construct(Number $number)
-    {
-        $this->number = $number;
-    }
 
     /**
      *

@@ -1,5 +1,6 @@
 <?php
 
+include_once 'FactorsOf.php';
 include_once 'Number.php';
 
 /**
@@ -13,12 +14,12 @@ class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase {
 
 	public function testConfirmFactorsMatchExpected(){
 
-		$fixture = new Number('28');
+		$number = new Number(28);
 
-		$this->assertSame(array('2', '4', '7', '14'), $fixture->getFactors());
+		$this->assertSame(array('2', '4', '7', '14'), iterator_to_array(new FactorsOf($number)));
 	}
 
-	public function testConfirmPrimeFactorsMatchExpected(){
+/* 	public function testConfirmPrimeFactorsMatchExpected(){
 
 		$fixture = new Number('28');
 
@@ -37,5 +38,5 @@ class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase {
 		$fixture = new Number('600851475143');
 
 		$this->assertSame(array('71', '839', '1471', '6857'), $fixture->getPrimeFactors());
-	}
+	} */
 }

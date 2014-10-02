@@ -1,6 +1,7 @@
 <phpunit bootstrap="./bootstrap.php" colors="true">
 	<testsuites>
 		<testsuite>
+			<file>problems-one-to-ten/NumberTest.php</file>
 			<file>problems-one-to-ten/DigitProductOfTest.php</file>
 		</testsuite>
 	</testsuites>
