@@ -1,5 +1,4 @@
 <?php
-
 include_once 'FactorsOf.php';
 include_once 'Number.php';
 include_once 'PrimeFactorsOf.php';
@@ -11,33 +10,52 @@ include_once 'PrimeFactorsOf.php';
  * @copyright Estee Lauder Companies Ltd. 2013
  * @since 1 Nov 2013
  */
-class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase {
+class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase
+{
 
-	public function testConfirmFactorsMatchExpected(){
+    public function testConfirmFactorsMatchExpected()
+    {
+        $number = new Number(28);
+        
+        $this->assertSame(array(
+            '2',
+            '4',
+            '7',
+            '14'
+        ), iterator_to_array(new FactorsOf($number)));
+    }
 
-		$number = new Number(28);
+    public function testConfirmPrimeFactorsMatchExpected()
+    {
+        $number = new Number('28');
+        
+        $this->assertSame(array(
+            '2',
+            '7'
+        ), iterator_to_array(new PrimeFactorsOf($number)));
+    }
 
-		$this->assertSame(array('2', '4', '7', '14'), iterator_to_array(new FactorsOf($number)));
-	}
+    public function testConfirmPrimeFactorsMatchExpectedForGivenExample()
+    {
+        $number = new Number('13195');
+        
+        $this->assertSame(array(
+            '5',
+            '7',
+            '13',
+            '29'
+        ), iterator_to_array(new PrimeFactorsOf($number)));
+    }
 
- 	public function testConfirmPrimeFactorsMatchExpected(){
-
-		$number = new Number('28');
-
-		$this->assertSame(array('2', '7'), iterator_to_array(new PrimeFactorsOf($number)));
-	}
-
-/*	public function testConfirmPrimeFactorsMatchExpectedForGivenExample(){
-
-		$fixture = new Number('13195');
-
-		$this->assertSame(array('5', '7', '13', '29'), $fixture->getPrimeFactors());
-	}
-
-	public function testConfirmHighestPrimeFactorMatchesExpectedForUnknownExample(){
-
-		$fixture = new Number('600851475143');
-
-		$this->assertSame(array('71', '839', '1471', '6857'), $fixture->getPrimeFactors());
-	} */
+    public function testConfirmHighestPrimeFactorMatchesExpectedForUnknownExample()
+    {
+        $number = new Number('600851475143');
+        
+        $this->assertSame(array(
+            '71',
+            '839',
+            '1471',
+            '6857'
+        ), iterator_to_array(new PrimeFactorsOf($number)));
+    }
 }
