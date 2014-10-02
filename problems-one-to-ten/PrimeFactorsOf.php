@@ -1,12 +1,16 @@
 <?php
+
 include_once 'AbstractFactorsOf.php';
 
 /**
- * Contains the FactorsOf class
+ * Contains the PrimeFactorsOf class
  *
  * @author Richard Harrison
  * @since 2 Oct 2014
  */
-class FactorsOf extends AbstractFactorsOf
+class PrimeFactorsOf extends AbstractFactorsOf
 {
+
+
+
 }

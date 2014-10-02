@@ -2,6 +2,7 @@
 
 include_once 'FactorsOf.php';
 include_once 'Number.php';
+include_once 'PrimeFactorsOf.php';
 
 /**
  * Contains the LargestPrimeFactorTest class
@@ -19,14 +20,14 @@ class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame(array('2', '4', '7', '14'), iterator_to_array(new FactorsOf($number)));
 	}
 
-/* 	public function testConfirmPrimeFactorsMatchExpected(){
+ 	public function testConfirmPrimeFactorsMatchExpected(){
 
-		$fixture = new Number('28');
+		$number = new Number('28');
 
-		$this->assertSame(array('2', '7'), $fixture->getPrimeFactors());
+		$this->assertSame(array('2', '7'), iterator_to_array(new PrimeFactorsOf($number)));
 	}
 
-	public function testConfirmPrimeFactorsMatchExpectedForGivenExample(){
+/*	public function testConfirmPrimeFactorsMatchExpectedForGivenExample(){
 
 		$fixture = new Number('13195');
 
