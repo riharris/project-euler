@@ -40,7 +40,7 @@ class PalindromicNumbersTest extends PHPUnit_Framework_TestCase
 
     public function testUpperFullRangeForNumbersHavingThreeDigitFactorPairs()
     {
-        $this->markTestSkipped();
+        $this->markTestSkipped('Solution for problem four');
         
         $this->assertSame(array(
             906609,
