@@ -38,6 +38,15 @@ class NumberTest extends PHPUnit_Framework_TestCase
         $this->assertSame(false, $fixture->isMultipleOf(3));
     }
 
+    public function testConfirmIncrementReturnsExpected()
+    {
+        $fixture = new Number(0);
+        
+        $this->assertSame('2', $fixture->increment()
+            ->increment()
+            ->getValue());
+    }
+
     public function dataExpected()
     {
         $output[] = array(
@@ -70,7 +79,7 @@ class NumberTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dataExpected
-     * 
+     *
      * @param int $value            
      * @param boolean $expected            
      */

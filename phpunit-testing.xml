@@ -2,7 +2,7 @@
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-one-to-ten/SmallestMultipleTest.php</file>
+			<file>problems-one-to-ten/PrimeAtIndexTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

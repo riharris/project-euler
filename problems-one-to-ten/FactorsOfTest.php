@@ -51,7 +51,7 @@ class FactorsOfTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmHighestPrimeFactorMatchesExpectedForUnknownExample()
     {
-        $this->markTestSkipped('Solution for problem 3');
+        $this->markTestSkipped('Solution for problem three');
         
         $number = new Number('600851475143');
         

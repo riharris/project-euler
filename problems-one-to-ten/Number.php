@@ -28,21 +28,6 @@ class Number implements NumberInterface
         $this->value = strval($value);
     }
 
-    public function getSumOfPowers($power)
-    {
-        $output = '0';
-        
-        $count = '1';
-        
-        while (bccomp($this->value, $count) >= 0) {
-            
-            $output = bcadd($output, bcpow($count, $power));
-            $count = bcadd($count, '1');
-        }
-        
-        return $output;
-    }
-
     /**
      *
      * @return string
@@ -50,6 +35,16 @@ class Number implements NumberInterface
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     *
+     * @return Number
+     */
+    public function increment()
+    {
+        $this->value = bcadd('1', $this->value);
+        return $this;
     }
 
     /**
