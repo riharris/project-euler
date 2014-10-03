@@ -28,7 +28,7 @@ class MultiplesOfTo extends AbstractIterator
             }
         }
         
-        $this->iterator = new ArrayIterator($values);
+        parent::__construct($values);
     }
 
     /**

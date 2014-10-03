@@ -35,7 +35,7 @@ abstract class AbstractFactorsOf extends AbstractIterator
         
         sort($values);
         
-        $this->iterator = new ArrayIterator($values);
+        parent::__construct($values);
     }
 
     /**

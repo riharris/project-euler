@@ -47,6 +47,6 @@ class FactorPairsOf extends AbstractIterator
             $possible = bcadd($possible, '1');
         }
         
-        $this->iterator = new ArrayIterator($values);
+        parent::__construct($values);
     }
 }

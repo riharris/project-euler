@@ -39,7 +39,7 @@ class EvenFibonacciNumbersTo extends AbstractIterator
             $odds = $this->getNextTwoOddNumbersAssumingOOEOOESequence($odds);
         }
         
-        $this->iterator = new ArrayIterator($values);
+        parent::__construct($values);
     }
 
     /**

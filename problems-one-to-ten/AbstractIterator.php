@@ -15,6 +15,14 @@ class AbstractIterator implements Iterator
      */
     protected $iterator;
     
+    /**
+     * @param array $values
+     */
+    public function __construct(array $values) {
+        
+        $this->iterator = new ArrayIterator($values);
+    }
+    
     /*
      * (non-PHPdoc) @see Iterator::current()
      */

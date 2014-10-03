@@ -29,7 +29,7 @@ class FibonacciNumbersTo extends AbstractIterator
             $values[] = $this->getNextElement($values);
         }
         
-        $this->iterator = new ArrayIterator($values);
+        parent::__construct($values);
     }
 
     /**
