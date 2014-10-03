@@ -1,7 +1,7 @@
 <phpunit bootstrap="./bootstrap.php" colors="true" stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-one-to-ten/PalindromicNumbersTest.php</file>
+			<file>problems-one-to-ten/FibonacciNumbersToTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>
