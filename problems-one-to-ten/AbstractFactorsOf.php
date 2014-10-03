@@ -1,4 +1,5 @@
 <?php
+include_once 'AbstractIterator.php';
 include_once 'LargestPossibleFactorOf.php';
 include_once 'Number.php';
 
@@ -8,7 +9,7 @@ include_once 'Number.php';
  * @author Richard Harrison
  * @since 2 Oct 2014
  */
-abstract class AbstractFactorsOf implements Iterator
+abstract class AbstractFactorsOf extends AbstractIterator
 {
 
     /**
@@ -16,12 +17,6 @@ abstract class AbstractFactorsOf implements Iterator
      * @var string
      */
     protected $highestFactorSought;
-
-    /**
-     *
-     * @var ArrayIterator
-     */
-    protected $iterator;
 
     /**
      *
@@ -47,65 +42,6 @@ abstract class AbstractFactorsOf implements Iterator
         
         $this->iterator = new ArrayIterator($values);
     }
-    /*
-     * (non-PHPdoc)
-     * @see Iterator::current()
-     */
-    public function current()
-    {
-        return call_user_func(array(
-            $this->iterator,
-            __FUNCTION__
-        ));
-    }
-    
-    /*
-     * (non-PHPdoc)
-     * @see Iterator::key()
-     */
-    public function key()
-    {
-        return call_user_func(array(
-            $this->iterator,
-            __FUNCTION__
-        ));
-    }
-    
-    /*
-     * (non-PHPdoc)
-     * @see Iterator::next()
-     */
-    public function next()
-    {
-        return call_user_func(array(
-            $this->iterator,
-            __FUNCTION__
-        ));
-    }
-    
-    /*
-     * (non-PHPdoc)
-     * @see Iterator::rewind()
-     */
-    public function rewind()
-    {
-        return call_user_func(array(
-            $this->iterator,
-            __FUNCTION__
-        ));
-    }
-    
-    /*
-     * (non-PHPdoc)
-     * @see Iterator::valid()
-     */
-    public function valid()
-    {
-        return call_user_func(array(
-            $this->iterator,
-            __FUNCTION__
-        ));
-    }
 
     /**
      *
@@ -119,7 +55,7 @@ abstract class AbstractFactorsOf implements Iterator
         
         while (bccomp($this->highestFactorSought, $possible) > 0) {
             
-            if ($number->hasFactor($possible)) {
+            if ($number->isMultiplierOf($possible)) {
                 
                 $output[] = array(
                     $possible,

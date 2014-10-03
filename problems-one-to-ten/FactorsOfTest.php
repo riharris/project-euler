@@ -4,13 +4,13 @@ include_once 'Number.php';
 include_once 'PrimeFactorsOf.php';
 
 /**
- * Contains the LargestPrimeFactorTest class
+ * Contains the FactorsOfTest class
  *
  * @author Richard Harrison <riharrison@estee-lauder.co.uk>
  * @copyright Estee Lauder Companies Ltd. 2013
  * @since 1 Nov 2013
  */
-class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase
+class FactorsOfTest extends PHPUnit_Framework_TestCase
 {
 
     public function testConfirmFactorsMatchExpected()

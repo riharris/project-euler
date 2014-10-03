@@ -1,4 +1,5 @@
 <?php
+include_once 'NumberInterface.php';
 
 /**
  * Contains the Number class
@@ -8,7 +9,7 @@
  * @see http://stackoverflow.com/questions/16763322/a-formula-to-find-prime-numbers-in-a-loop
  * @since 1 Nov 2013
  */
-class Number
+class Number implements NumberInterface
 {
 
     private $_largestFactorSought;
@@ -115,9 +116,23 @@ class Number
      * @param mixed $factor            
      * @return boolean
      */
-    public function hasFactor($factor)
+    public function isMultiplierOf($factor)
     {
         if ('0' == bcmod($this->value, strval($factor))) {
+            return true;
+        } else {
+            
+            return false;
+        }
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function isPalindromic()
+    {
+        if ($this->value == strrev($this->value)) {
+            
             return true;
         } else {
             
