@@ -36,7 +36,7 @@ class FactorPairsOf extends AbstractIterator
         
         while (bccomp($this->highestFactorSought, $possible) > 0) {
             
-            if ($number->isMultiplierOf($possible)) {
+            if ($number->isMultipleOf($possible)) {
                 
                 $values[] = array(
                     $possible,

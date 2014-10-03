@@ -116,7 +116,7 @@ class Number implements NumberInterface
      * @param mixed $factor            
      * @return boolean
      */
-    public function isMultiplierOf($factor)
+    public function isMultipleOf($factor)
     {
         if ('0' == bcmod($this->value, strval($factor))) {
             return true;

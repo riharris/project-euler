@@ -29,13 +29,13 @@ class NumberTest extends PHPUnit_Framework_TestCase
     {
         $fixture = new Number('10');
         
-        $this->assertSame(true, $fixture->isMultiplierOf(5));
+        $this->assertSame(true, $fixture->isMultipleOf(5));
     }
 
     public function testConfirmHasFactorReturnsExpectedForInvalidArgument()
     {
         $fixture = new Number('10');
         
-        $this->assertSame(false, $fixture->isMultiplierOf(3));
+        $this->assertSame(false, $fixture->isMultipleOf(3));
     }
 }

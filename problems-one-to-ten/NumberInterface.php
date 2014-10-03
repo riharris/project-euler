@@ -20,7 +20,7 @@ interface NumberInterface
      * @param mixed $factor            
      * @return boolean
      */
-    public function isMultiplierOf($factor);
+    public function isMultipleOf($factor);
 
     /**
      *
