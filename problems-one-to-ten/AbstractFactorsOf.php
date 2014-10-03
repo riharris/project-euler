@@ -1,5 +1,6 @@
 <?php
 include_once 'AbstractIterator.php';
+include_once 'FactorPairsOf.php';
 include_once 'LargestPossibleFactorOf.php';
 include_once 'Number.php';
 
@@ -14,12 +15,6 @@ abstract class AbstractFactorsOf extends AbstractIterator
 
     /**
      *
-     * @var string
-     */
-    protected $highestFactorSought;
-
-    /**
-     *
      * @param Number $number            
      */
     public function __construct(Number $number)
@@ -28,7 +23,7 @@ abstract class AbstractFactorsOf extends AbstractIterator
         
         $this->highestFactorSought = sprintf('%s', new LargestPossibleFactorOf($number));
         
-        foreach ($this->getFactorPairs($number) as $pair) {
+        foreach (new FactorPairsOf($number) as $pair) {
             
             $values = array_merge($values, $pair);
         }
@@ -41,32 +36,6 @@ abstract class AbstractFactorsOf extends AbstractIterator
         sort($values);
         
         $this->iterator = new ArrayIterator($values);
-    }
-
-    /**
-     *
-     * @return multitype:multitype:string
-     */
-    protected function getFactorPairs(Number $number)
-    {
-        $output = array();
-        
-        $possible = '2';
-        
-        while (bccomp($this->highestFactorSought, $possible) > 0) {
-            
-            if ($number->isMultiplierOf($possible)) {
-                
-                $output[] = array(
-                    $possible,
-                    bcdiv($number->getValue(), $possible)
-                );
-            }
-            
-            $possible = bcadd($possible, '1');
-        }
-        
-        return $output;
     }
 
     /**
