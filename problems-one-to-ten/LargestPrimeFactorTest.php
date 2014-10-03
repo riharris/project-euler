@@ -37,6 +37,8 @@ class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmPrimeFactorsMatchExpectedForGivenExample()
     {
+        $this->markTestSkipped();
+        
         $number = new Number('13195');
         
         $this->assertSame(array(
@@ -49,6 +51,8 @@ class LargestPrimeFactorTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmHighestPrimeFactorMatchesExpectedForUnknownExample()
     {
+        $this->markTestSkipped();
+        
         $number = new Number('600851475143');
         
         $this->assertSame(array(

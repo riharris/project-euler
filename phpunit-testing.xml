@@ -1,4 +1,4 @@
-<phpunit bootstrap="./bootstrap.php" colors="true">
+<phpunit bootstrap="./bootstrap.php" colors="true" stopOnFailure="true">
 	<testsuites>
 		<testsuite>
 			<file>problems-one-to-ten/LargestPrimeFactorTest.php</file>
