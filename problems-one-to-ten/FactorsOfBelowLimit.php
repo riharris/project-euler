@@ -1,4 +1,5 @@
 <?php
+include_once 'AbstractFactorsOf.php';
 include_once 'Number.php';
 
 /**
