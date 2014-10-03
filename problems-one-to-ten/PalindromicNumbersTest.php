@@ -1,5 +1,6 @@
 <?php
 include_once 'PalindromicNumbersInRange.php';
+include_once 'PalindromicNumbersInRangeHavingTwoDigitFactors.php';
 
 /**
  * Contains the PalindromicNumbersTest class
@@ -28,16 +29,13 @@ class PalindromicNumbersTest extends PHPUnit_Framework_TestCase
             993399
         ), iterator_to_array(new PalindromicNumbersInRange(100 * 100, 999 * 999, 5)));
     }
-    
-    // public function testKnownRangeForNumbersHavingTwoDigitFactorPairs()
-    // {
-    // $fixture = new PalindromicNumbers();
-    // $this->assertSame(array(
-    // 9009
-    // ), $fixture->setLowerLimit(9009)
-    // ->setUpperLimit(9999)
-    // ->getNumbersInRangeHavingTwoDigitFactorPairs());
-    // }
+
+    public function testKnownRangeForNumbersHavingTwoDigitFactorPairs()
+    {
+        $this->assertSame(array(
+            9009
+        ), iterator_to_array(new PalindromicNumbersInRangeHavingTwoDigitFactors(9009, 9999, 1)));
+    }
     
     // public function testUpperFullRangeForNumbersHavingThreeDigitFactorPairs()
     // {

@@ -3,12 +3,12 @@ include_once 'AbstractPalindromicNumbersInRange.php';
 include_once 'Number.php';
 
 /**
- * Contains the PalindromicNumbersInRange class
+ * Contains the PalindromicNumbersInRangeHavingThreeDigitFactors class
  *
  * @author Richard Harrison
  * @since 3 Oct 2014
  */
-class PalindromicNumbersInRange extends AbstractPalindromicNumbersInRange
+class PalindromicNumbersInRangeHavingThreeDigitFactors extends AbstractPalindromicNumbersInRange
 {
     /*
      * (non-PHPdoc) @see AbstractPalindromicNumbersInRange::isValid()
