@@ -1,6 +1,7 @@
 <?php
 include_once 'PalindromicNumbersInRange.php';
-include_once 'PalindromicNumbersInRangeHavingTwoDigitFactors.php';
+include_once 'PalindromicNumbersInRangeHavingTwoDigitFactorPairs.php';
+include_once 'PalindromicNumbersInRangeHavingThreeDigitFactorPairs.php';
 
 /**
  * Contains the PalindromicNumbersTest class
@@ -34,20 +35,19 @@ class PalindromicNumbersTest extends PHPUnit_Framework_TestCase
     {
         $this->assertSame(array(
             9009
-        ), iterator_to_array(new PalindromicNumbersInRangeHavingTwoDigitFactors(9009, 9999, 1)));
+        ), iterator_to_array(new PalindromicNumbersInRangeHavingTwoDigitFactorPairs(9009, 9999, 1)));
     }
-    
-    // public function testUpperFullRangeForNumbersHavingThreeDigitFactorPairs()
-    // {
-    // $fixture = new PalindromicNumbers();
-    // $this->assertSame(array(
-    // 906609,
-    // 888888,
-    // 886688,
-    // 861168,
-    // 855558
-    // ), $fixture->setLowerLimit(900 * 950)
-    // ->setUpperLimit(999 * 999)
-    // ->getNumbersInRangeHavingThreeDigitFactorPairs());
-    // }
+
+    public function testUpperFullRangeForNumbersHavingThreeDigitFactorPairs()
+    {
+        $this->markTestSkipped();
+        
+        $this->assertSame(array(
+            906609,
+            888888,
+            886688,
+            861168,
+            855558
+        ), iterator_to_array(new PalindromicNumbersInRangeHavingThreeDigitFactorPairs(900 * 950, 999 * 999, 5)));
+    }
 }
