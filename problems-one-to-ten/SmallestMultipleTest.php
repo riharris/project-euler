@@ -50,7 +50,7 @@ class SmallestMultipleTest extends PHPUnit_Framework_TestCase
             '18',
             '19',
             '20'
-        ), iterator_to_array(new FactorsOfBelowLimit(new Number(20 * 19 * 18 * 17 * 16 * 15 * 14 * 13 * 12 * 11), 20)));
+        ), iterator_to_array(new FactorsOfBelowLimit(new Number(20 * 19 * 9 * 17 * 4 * 3 * 7 * 13 * 11), 20)));
     }
     
     // public function testResultForKnownPattern(){

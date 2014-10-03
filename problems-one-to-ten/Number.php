@@ -12,15 +12,11 @@ include_once 'NumberInterface.php';
 class Number implements NumberInterface
 {
 
-    private $_largestFactorSought;
-
-    private $_messages = array();
-
     /**
      *
      * @var string
      */
-    private $value;
+    protected $value;
 
     /**
      *
@@ -46,62 +42,6 @@ class Number implements NumberInterface
         return $output;
     }
 
-    public function getFactorPairs()
-    {
-        $output = array();
-        
-        $possible = '2';
-        
-        while (bccomp($this->_largestFactorSought, $possible) > 0) {
-            
-            if ($this->_isFactor($this->value, $possible)) {
-                
-                $output[] = array(
-                    $possible,
-                    bcdiv($this->value, $possible)
-                );
-            }
-            
-            $possible = bcadd($possible, '1');
-        }
-        
-        return $output;
-    }
-
-    /**
-     *
-     * @return array
-     */
-    public function getFactors()
-    {
-        $output = array();
-        
-        foreach ($this->getFactorPairs() as $pair) {
-            
-            $output = array_merge($output, $pair);
-        }
-        
-        sort($output);
-        
-        return array_unique(array_filter($output, array(
-            $this,
-            '_isLessThanOrEqualToLargestFactorSought'
-        )));
-    }
-
-    public function getPrimeFactors()
-    {
-        return array_values(array_filter($this->getFactors(), array(
-            $this,
-            '_isPrime'
-        )));
-    }
-
-    public function getMessages()
-    {
-        return $this->_messages;
-    }
-
     /**
      *
      * @return string
@@ -125,8 +65,9 @@ class Number implements NumberInterface
             return false;
         }
     }
-    
+
     /**
+     *
      * @return boolean
      */
     public function isPalindromic()
@@ -146,54 +87,30 @@ class Number implements NumberInterface
      */
     public function isPrime()
     {
-        return $this->_isPrime($this->value);
-    }
-
-    public function setLargestFactorSought($number)
-    {
-        $this->_largestFactorSought = bcadd($number, '1');
-        return $this;
-    }
-
-    private function _getLargestLikelyFactor($number)
-    {
-        return bcadd(bcsqrt($number, 0), '1');
-    }
-
-    private function _isFactor($quotient, $divisor)
-    {
-        if ('0' == bcmod($quotient, $divisor)) {
-            return true;
-        } else {
-            
+        if ($this->value == '1') {
             return false;
-        }
-    }
-
-    private function _isLessThanOrEqualToLargestFactorSought($number)
-    {
-        return (bccomp($number, $this->_largestFactorSought) <= 0) ? true : false;
-    }
-
-    private function _isPrime($number)
-    {
-        if ($number == '1') {
-            return false;
-        } elseif ($number == '2') {
+        } elseif ($this->value == '2') {
             return true;
-        } elseif ($this->_isFactor($number, '2')) {
+        } elseif ($this->isMultipleOf(2)) {
             return false;
         } else {
             
-            $max = $this->_getLargestLikelyFactor($number);
+            /**
+             *
+             * @var string $max
+             */
+            $max = $this->getLargestLikelyFactor();
             
+            /**
+             *
+             * @var $i
+             */
             $i = '3';
             
             while (bccomp($max, $i) > 0) {
                 
-                if ($this->_isFactor($number, $i)) {
+                if ($this->isMultipleOf($i)) {
                     
-                    $this->_messages[] = sprintf('Factor %s is divisible by %s', $number, $i);
                     return false;
                 }
                 
@@ -202,5 +119,14 @@ class Number implements NumberInterface
             
             return true;
         }
+    }
+
+    /**
+     *
+     * @return string
+     */
+    protected function getLargestLikelyFactor()
+    {
+        return bcadd(bcsqrt($this->value, 0), '1');
     }
 }

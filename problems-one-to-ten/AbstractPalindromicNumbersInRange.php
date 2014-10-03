@@ -1,5 +1,4 @@
 <?php
-
 include_once 'AbstractIterator.php';
 include_once 'Number.php';
 
@@ -66,9 +65,10 @@ abstract class AbstractPalindromicNumbersInRange extends AbstractIterator
     {
         return $number->isPalindromic();
     }
-    
+
     /**
-     * @param Number $number
+     *
+     * @param Number $number            
      * @return boolean
      */
     abstract protected function isValid(Number $number);

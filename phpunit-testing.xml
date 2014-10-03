@@ -1,7 +1,8 @@
-<phpunit bootstrap="./bootstrap.php" colors="true" stopOnFailure="true">
+<phpunit bootstrap="./bootstrap.php" colors="true"
+	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-one-to-ten/SmallestMultipleTest.php</file>
+			<file>problems-one-to-ten/NumberTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

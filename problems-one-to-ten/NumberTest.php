@@ -1,5 +1,4 @@
 <?php
-
 include_once 'Number.php';
 
 /**
@@ -37,5 +36,48 @@ class NumberTest extends PHPUnit_Framework_TestCase
         $fixture = new Number('10');
         
         $this->assertSame(false, $fixture->isMultipleOf(3));
+    }
+
+    public function dataExpected()
+    {
+        $output[] = array(
+            1,
+            false
+        );
+        $output[] = array(
+            2,
+            true
+        );
+        $output[] = array(
+            3,
+            true
+        );
+        $output[] = array(
+            4,
+            false
+        );
+        $output[] = array(
+            5,
+            true
+        );
+        $output[] = array(
+            1,
+            false
+        );
+        
+        return $output;
+    }
+
+    /**
+     * @dataProvider dataExpected
+     * 
+     * @param int $value            
+     * @param boolean $expected            
+     */
+    public function testConfirmIsPrimeReturnsExpected($value, $expected)
+    {
+        $fixture = new Number($value);
+        
+        $this->assertSame($expected, $fixture->isPrime());
     }
 }

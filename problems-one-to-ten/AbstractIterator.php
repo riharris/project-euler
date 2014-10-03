@@ -14,12 +14,13 @@ class AbstractIterator implements Iterator
      * @var ArrayIterator
      */
     protected $iterator;
-    
+
     /**
-     * @param array $values
+     *
+     * @param array $values            
      */
-    public function __construct(array $values) {
-        
+    public function __construct(array $values)
+    {
         $this->iterator = new ArrayIterator($values);
     }
     

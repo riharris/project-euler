@@ -11,7 +11,8 @@ class FibonacciNumbersTo extends AbstractIterator
 {
 
     /**
-     * @param int $limit
+     *
+     * @param int $limit            
      */
     public function __construct($limit)
     {

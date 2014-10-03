@@ -17,6 +17,7 @@ class PrimeFactorsOf extends AbstractFactorsOf
     protected function isValid($value)
     {
         /**
+         *
          * @var Number $number
          */
         $number = new Number($value);
