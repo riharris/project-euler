@@ -99,7 +99,7 @@ class Number implements NumberInterface
              *
              * @var string $max
              */
-            $max = $this->getLargestLikelyFactor();
+            $max = strval(new LargestPossibleFactorOf($this));
             
             /**
              *
@@ -119,14 +119,5 @@ class Number implements NumberInterface
             
             return true;
         }
-    }
-
-    /**
-     *
-     * @return string
-     */
-    protected function getLargestLikelyFactor()
-    {
-        return bcadd(bcsqrt($this->value, 0), '1');
     }
 }
