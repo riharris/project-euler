@@ -1,6 +1,5 @@
 <?php
 include_once 'Number.php';
-include_once 'FactorMatcher.php';
 include_once 'FactorsOfBelowLimit.php';
 
 /**
@@ -30,6 +29,8 @@ class SmallestMultipleTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmFactorsForLargerKnownValue()
     {
+        $this->markTestSkipped('Solution for problem five');
+        
         $this->assertSame(array(
             '2',
             '3',
@@ -50,22 +51,6 @@ class SmallestMultipleTest extends PHPUnit_Framework_TestCase
             '18',
             '19',
             '20'
-        ), iterator_to_array(new FactorsOfBelowLimit(new Number(20 * 19 * 9 * 17 * 4 * 3 * 7 * 13 * 11), 20)));
+        ), iterator_to_array(new FactorsOfBelowLimit(new Number(2 * 2 * 2 * 2 * 3 * 3 * 5 * 7 * 11 * 13 * 17 * 19), 20)));
     }
-    
-    // public function testResultForKnownPattern(){
-    
-    // $fixture = new FactorMatcher();
-    
-    // $this->assertSame('2520', $fixture->setPattern(range(2, 10))
-    // ->getFirstInstance());
-    // }
-    
-    // public function testResultForUnknownPattern(){
-    
-    // $fixture = new FactorMatcher();
-    
-    // $this->assertSame('232792560', $fixture->setPattern(range(2, 20))
-    // ->getFirstInstance());
-    // }
 }

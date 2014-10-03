@@ -1,5 +1,6 @@
 <?php
 include_once 'NumberInterface.php';
+include_once 'LargestPossibleFactorOf.php';
 
 /**
  * Contains the Number class
