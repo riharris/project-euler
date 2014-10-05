@@ -27,7 +27,7 @@ class MultiplesOfToTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmOutputMatchesExpectedForLimitOfOneThousand()
     {
-        $this->markTestSkipped('Solution for problem one');
+        $this->markTestSkipped('Solution for problem one = 233168');
         
         $this->assertSame(233168, array_sum(array_unique(array_merge(iterator_to_array(new MultiplesOfTo(3, 1000)), iterator_to_array(new MultiplesOfTo(5, 1000))))));
     }

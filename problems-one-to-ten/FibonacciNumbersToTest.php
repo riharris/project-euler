@@ -39,7 +39,7 @@ class FibonacciNumbersToTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmEvenValuesSumMatchesExpectedForUnknownRange()
     {
-        $this->markTestSkipped('Solution for problem two');
+        $this->markTestSkipped('Solution for problem two = 4613732');
         
         $this->assertSame(4613732, array_sum(iterator_to_array(new EvenFibonacciNumbersTo(4000000))));
     }

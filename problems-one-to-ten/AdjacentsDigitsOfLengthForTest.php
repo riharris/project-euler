@@ -30,9 +30,9 @@ class AdjacentDigitsOfLengthForTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmMaxDigitProductMatchesExpectedForGivenLength()
     {
-        $this->markTestSkipped('Solution to problem eight');
+        $this->markTestSkipped('Solution to problem eight = 23514624000');
         
-        $this->assertSame('5576689664895', sprintf('%s', new GreatestDigitProductOfAdjacentDigitsOfLengthFor(13, $this->getSeriesUnderTest())));
+        $this->assertSame('23514624000', strval(new DigitProductOf(new Number(new GreatestDigitProductOfAdjacentDigitsOfLengthFor(13, $this->getSeriesUnderTest())))));
     }
 
     protected function getSeriesUnderTest()

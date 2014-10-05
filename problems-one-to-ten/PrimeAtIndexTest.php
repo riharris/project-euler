@@ -17,7 +17,7 @@ class PrimeAtIndexTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmResultMatchesExpectedForUnknownValue()
     {
-        $this->markTestSkipped('Solution for problem seven');
+        $this->markTestSkipped('Solution for problem seven = 104743');
         
         $this->assertSame('104743', sprintf('%s', new PrimeAtIndex(10001)));
     }

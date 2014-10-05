@@ -22,13 +22,13 @@ class PowersOfToTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmSumMatchesExpectedForFirstNewSequence()
     {
-        $this->markTestSkipped('Solution for problem six');
+        $this->markTestSkipped('Solution for problem six = 25164150');
         $this->assertSame(338350, array_sum(iterator_to_array(new PowersOfTo(2, 100))));
     }
 
     public function testConfirmSumMatchesExpectedForSecondNewSequence()
     {
-        $this->markTestSkipped('Solution for problem six');
+        $this->markTestSkipped('Solution for problem six = 25164150');
         $this->assertSame(25502500, array_sum(iterator_to_array(new PowersOfTo(1, 100))) * array_sum(iterator_to_array(new PowersOfTo(1, 100))));
     }
 }

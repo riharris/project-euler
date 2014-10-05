@@ -36,7 +36,7 @@ class GreatestDigitProductOfAdjacentDigitsOfLengthFor
             $series = substr($series, 1);
         }
     }
-
+    
     /**
      *
      * @return string

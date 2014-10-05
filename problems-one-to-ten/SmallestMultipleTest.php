@@ -29,7 +29,7 @@ class SmallestMultipleTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmFactorsForLargerKnownValue()
     {
-        $this->markTestSkipped('Solution for problem five');
+        $this->markTestSkipped('Solution for problem five = 232792560');
         
         $this->assertSame(array(
             '2',
