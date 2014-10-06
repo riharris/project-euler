@@ -23,7 +23,7 @@ class TotalPrimesTo
      */
     public function __construct($limit)
     {
-        for ($i = 3; $i < $limit; $i = $i + 2) {
+        for ($i = 3; $i < $limit; $i += 2) {
             
             if (call_user_func(array(
                 new Number($i),

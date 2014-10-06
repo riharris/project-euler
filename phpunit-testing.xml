@@ -2,7 +2,7 @@
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-one-to-ten/PythagoreanTripletsHavingTotalTest.php</file>
+			<file>problems-eleven-to-twenty/GreatestProductOfAdjacentNumbersOfLengthFor.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

@@ -2,7 +2,7 @@
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<directory>problems-one-to-ten</directory>
+			<directory>problems-eleven-to-twenty</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
