@@ -1,4 +1,5 @@
 <?php
+include_once 'GridEntry.php';
 
 /**
  * Contains the GreatestProductOfAdjacentNumbersOfLengthFor class
@@ -11,9 +12,27 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
 
     /**
      *
-     * @var string
+     * @var int
      */
-    protected $value = '0';
+    protected $length;
+
+    /**
+     *
+     * @var int
+     */
+    protected $maxColumn;
+
+    /**
+     *
+     * @var int
+     */
+    protected $maxRow;
+
+    /**
+     *
+     * @var GridEntry[] $values
+     */
+    protected $values = array();
 
     /**
      *
@@ -22,118 +41,52 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      */
     public function __construct($length, $grid)
     {
-        /**
-         *
-         * @var array $values
-         */
-        $values = array();
-        
-        foreach (explode(PHP_EOL, $grid) as $line) {
-            $values[] = explode(' ', $line);
+        foreach (explode(PHP_EOL, $grid) as $row => $line) {
+            foreach (explode(' ', $line) as $column => $value) {
+                
+                $this->values[] = new GridEntry($column, $row, $value);
+            }
         }
         
-        /**
-         *
-         * @var int $sum1
-         */
-        $sum1 = $this->getMaxUpDiagonalProduct($values, $length);
-        
-        /**
-         *
-         * @var int $sum2
-         */
-        $sum2 = $this->getMaxDownDiagonalProduct($values, $length);
-        
-        /**
-         *
-         * @var int $sum3
-         */
-        $sum3 = $this->getMaxHorizontalProduct($values, $length);
-        
-        /**
-         *
-         * @var int $sum4
-         */
-        $sum4 = $this->getMaxVerticalProduct($values, $length);
-        
-        $this->value = strval(max(max($sum1, $sum2), max($sum3, $sum4)));
+        $this->length = $length;
+        $this->maxColumn = $column;
+        $this->maxRow = $row;
     }
 
     /**
      *
-     * @param array $values            
-     * @param int $length            
      * @return number
      */
-    protected function getMaxDownDiagonalProduct(array $values, $length)
+    protected function getMaxDownDiagonalProduct()
     {
         return 1;
     }
 
     /**
      *
-     * @param array $values            
-     * @param int $length            
      * @return number
      */
-    protected function getMaxHorizontalProduct(array $values, $length)
-    {
-        $output = 0;
-        
-        foreach ($values as $row) {
-            
-            while (count($row) > $length) {
-                
-                $output = max($output, array_product(array_slice($row, 0, $length)));
-                array_shift($row);
-            }
-        }
-        
-        return $output;
-    }
-
-    /**
-     *
-     * @param array $values            
-     * @param int $length            
-     * @return number
-     */
-    protected function getMaxUpDiagonalProduct(array $values, $length)
+    protected function getMaxHorizontalProduct()
     {
         return 1;
     }
 
     /**
      *
-     * @param array $values            
-     * @param int $length            
      * @return number
      */
-    protected function getMaxVerticalProduct(array $values, $length)
+    protected function getMaxUpDiagonalProduct()
     {
-        $output = 0;
-        
-        foreach ($this->transpose($values) as $row) {
-            
-            while (count($row) > $length) {
-                
-                $output = max($output, array_product(array_slice($row, 0, $length)));
-                array_shift($row);
-            }
-        }
-        
-        return $output;
+        return 1;
     }
 
     /**
      *
-     * @param array $values            
-     * @return array
+     * @return number
      */
-    protected function transpose($values)
+    protected function getMaxVerticalProduct()
     {
-        array_unshift($values, null);
-        return call_user_func_array('array_map', $values);
+        return 1;
     }
 
     /**
@@ -142,6 +95,30 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      */
     public function __toString()
     {
-        return $this->value;
+        /**
+         *
+         * @var int $sum1
+         */
+        $sum1 = $this->getMaxUpDiagonalProduct();
+        
+        /**
+         *
+         * @var int $sum2
+         */
+        $sum2 = $this->getMaxDownDiagonalProduct();
+        
+        /**
+         *
+         * @var int $sum3
+         */
+        $sum3 = $this->getMaxHorizontalProduct();
+        
+        /**
+         *
+         * @var int $sum4
+         */
+        $sum4 = $this->getMaxVerticalProduct();
+        
+        return strval(max(max($sum1, $sum2), max($sum3, $sum4)));
     }
 }
