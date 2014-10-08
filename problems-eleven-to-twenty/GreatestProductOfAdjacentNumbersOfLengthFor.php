@@ -28,35 +28,33 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
          */
         $values = array();
         
-        foreach (explode(PHP_EOL, $grid) as $row => $line) {
-            foreach (explode(' ', $line) as $column => $value) {
-                $values[sprintf('%d:%d', $row, $column)] = $value;
-            }
+        foreach (explode(PHP_EOL, $grid) as $line) {
+            $values[] = explode(' ', $line);
         }
         
         /**
          *
          * @var int $sum1
          */
-        $sum1 = $this->getMaxUpDiagonalSum($values, $length, max($row, $column));
+        $sum1 = $this->getMaxUpDiagonalProduct($values, $length);
         
         /**
          *
          * @var int $sum2
          */
-        $sum2 = $this->getMaxDownDiagonalSum($values, $length, max($row, $column));
+        $sum2 = $this->getMaxDownDiagonalProduct($values, $length);
         
         /**
          *
          * @var int $sum3
          */
-        $sum3 = $this->getMaxHorizontalSum($values, $length, $row);
+        $sum3 = $this->getMaxHorizontalProduct($values, $length);
         
         /**
          *
          * @var int $sum4
          */
-        $sum4 = $this->getMaxVerticalSum($values, $length, $column);
+        $sum4 = $this->getMaxVerticalProduct($values, $length);
         
         $this->value = strval(max(max($sum1, $sum2), max($sum3, $sum4)));
     }
@@ -65,10 +63,9 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      *
      * @param array $values            
      * @param int $length            
-     * @param int $range            
      * @return number
      */
-    public function getMaxDownDiagonalSum(array $values, $length, $range)
+    protected function getMaxDownDiagonalProduct(array $values, $length)
     {
         return 1;
     }
@@ -77,10 +74,31 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      *
      * @param array $values            
      * @param int $length            
-     * @param int $range            
      * @return number
      */
-    public function getMaxHorizontalSum(array $values, $length, $range)
+    protected function getMaxHorizontalProduct(array $values, $length)
+    {
+        $output = 0;
+        
+        foreach ($values as $row) {
+            
+            while (count($row) > $length) {
+                
+                $output = max($output, array_product(array_slice($row, 0, $length)));
+                array_shift($row);
+            }
+        }
+        
+        return $output;
+    }
+
+    /**
+     *
+     * @param array $values            
+     * @param int $length            
+     * @return number
+     */
+    protected function getMaxUpDiagonalProduct(array $values, $length)
     {
         return 1;
     }
@@ -89,24 +107,33 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      *
      * @param array $values            
      * @param int $length            
-     * @param int $range            
      * @return number
      */
-    public function getMaxUpDiagonalSum(array $values, $length, $range)
+    protected function getMaxVerticalProduct(array $values, $length)
     {
-        return 1;
+        $output = 0;
+        
+        foreach ($this->transpose($values) as $row) {
+            
+            while (count($row) > $length) {
+                
+                $output = max($output, array_product(array_slice($row, 0, $length)));
+                array_shift($row);
+            }
+        }
+        
+        return $output;
     }
 
     /**
      *
      * @param array $values            
-     * @param int $length            
-     * @param int $range            
-     * @return number
+     * @return array
      */
-    public function getMaxVerticalSum(array $values, $length, $range)
+    protected function transpose($values)
     {
-        return 1;
+        array_unshift($values, null);
+        return call_user_func_array('array_map', $values);
     }
 
     /**
