@@ -29,8 +29,8 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      */
     public function __construct($length, $grid)
     {
-        foreach (explode(PHP_EOL, $grid) as $row => $line) {
-            foreach (explode(' ', $line) as $column => $value) {
+        foreach (explode("\n", $grid) as $row => $line) {
+            foreach (explode(' ', trim($line)) as $column => $value) {
                 
                 $this->values[] = new GridEntry($column, $row, $value);
             }
@@ -95,7 +95,7 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
             
             foreach ($this->values as $next) {
                 
-                if ($next->sharesMajorDiagonal($start, $this->length) && $next->column > $start->column) {
+                if ($next->sharesMajorDiagonal($start, $this->length) && $next->row > $start->row) {
                     
                     $product *= $next->value;
                 }
@@ -129,7 +129,7 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
             
             foreach ($this->values as $next) {
                 
-                if ($next->sharesMinorDiagonal($start, $this->length) && $next->column > $start->column) {
+                if ($next->sharesMinorDiagonal($start, $this->length) && $next->row > $start->row) {
                     
                     $product *= $next->value;
                 }
