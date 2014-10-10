@@ -46,7 +46,7 @@ class GridEntry
      * @param int $maxDistance            
      * @return boolean
      */
-    public function shareColumn(GridEntry $entry, $maxDistance)
+    public function sharesColumn(GridEntry $entry, $maxDistance)
     {
         if ($this->column == $entry->column && abs($this->row - $entry->row) <= $maxDistance) {
             
@@ -63,7 +63,7 @@ class GridEntry
      * @param int $maxDistance            
      * @return boolean
      */
-    public function shareMajorDiagonal(GridEntry $entry, $maxDistance)
+    public function sharesMajorDiagonal(GridEntry $entry, $maxDistance)
     {
         for ($i = - $maxDistance; $i <= $maxDistance; $i ++) {
             
@@ -80,7 +80,7 @@ class GridEntry
      * @param int $maxDistance            
      * @return boolean
      */
-    public function shareMinorDiagonal(GridEntry $entry, $maxDistance)
+    public function sharesMinorDiagonal(GridEntry $entry, $maxDistance)
     {
         for ($i = - $maxDistance; $i <= $maxDistance; $i ++) {
             
@@ -98,7 +98,7 @@ class GridEntry
      * @param int $maxDistance            
      * @return boolean
      */
-    public function shareRow(GridEntry $entry, $maxDistance)
+    public function sharesRow(GridEntry $entry, $maxDistance)
     {
         if ($this->row == $entry->row && abs($this->column - $entry->column) <= $maxDistance) {
             

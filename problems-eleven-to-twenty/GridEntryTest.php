@@ -11,29 +11,29 @@ class GridEntryTest extends PHPUnit_Framework_TestCase
 {
     public function dataExpected() {
         
-        $output[] = array(array(0,0), array(0,0), 'shareColumn', 1, true);
-        $output[] = array(array(0,0), array(0,1), 'shareColumn', 1, true);
-        $output[] = array(array(0,0), array(0,2), 'shareColumn', 1, false);
-        $output[] = array(array(0,0), array(1,0), 'shareColumn', 1, false);
+        $output[] = array(array(0,0), array(0,0), 'sharesColumn', 1, true);
+        $output[] = array(array(0,0), array(0,1), 'sharesColumn', 1, true);
+        $output[] = array(array(0,0), array(0,2), 'sharesColumn', 1, false);
+        $output[] = array(array(0,0), array(1,0), 'sharesColumn', 1, false);
         
-        $output[] = array(array(0,0), array(0,0), 'shareMinorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(-1,1), 'shareMinorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(1,-1), 'shareMinorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(-2,2), 'shareMinorDiagonal', 1, false);
-        $output[] = array(array(0,0), array(2,-2), 'shareMinorDiagonal', 1, false);
-        $output[] = array(array(0,0), array(1,0), 'shareMinorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(0,0), 'sharesMinorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(-1,1), 'sharesMinorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(1,-1), 'sharesMinorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(-2,2), 'sharesMinorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(2,-2), 'sharesMinorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(1,0), 'sharesMinorDiagonal', 1, false);
         
-        $output[] = array(array(0,0), array(0,0), 'shareMajorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(1,1), 'shareMajorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(-1,-1), 'shareMajorDiagonal', 1, true);
-        $output[] = array(array(0,0), array(2,2), 'shareMajorDiagonal', 1, false);
-        $output[] = array(array(0,0), array(-2,-2), 'shareMajorDiagonal', 1, false);
-        $output[] = array(array(0,0), array(1,0), 'shareMajorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(0,0), 'sharesMajorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(1,1), 'sharesMajorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(-1,-1), 'sharesMajorDiagonal', 1, true);
+        $output[] = array(array(0,0), array(2,2), 'sharesMajorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(-2,-2), 'sharesMajorDiagonal', 1, false);
+        $output[] = array(array(0,0), array(1,0), 'sharesMajorDiagonal', 1, false);
         
-        $output[] = array(array(0,0), array(0,0), 'shareRow', 1, true);
-        $output[] = array(array(0,0), array(1,0), 'shareRow', 1, true);
-        $output[] = array(array(0,0), array(2,0), 'shareRow', 1, false);
-        $output[] = array(array(0,0), array(0,1), 'shareRow', 1, false);
+        $output[] = array(array(0,0), array(0,0), 'sharesRow', 1, true);
+        $output[] = array(array(0,0), array(1,0), 'sharesRow', 1, true);
+        $output[] = array(array(0,0), array(2,0), 'sharesRow', 1, false);
+        $output[] = array(array(0,0), array(0,1), 'sharesRow', 1, false);
         
         
         

@@ -18,18 +18,6 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
 
     /**
      *
-     * @var int
-     */
-    protected $maxColumn;
-
-    /**
-     *
-     * @var int
-     */
-    protected $maxRow;
-
-    /**
-     *
      * @var GridEntry[] $values
      */
     protected $values = array();
@@ -49,17 +37,6 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
         }
         
         $this->length = $length;
-        $this->maxColumn = $column;
-        $this->maxRow = $row;
-    }
-
-    /**
-     *
-     * @return number
-     */
-    protected function getMaxDownDiagonalProduct()
-    {
-        return 1;
     }
 
     /**
@@ -68,16 +45,100 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      */
     protected function getMaxHorizontalProduct()
     {
-        return 1;
+        /**
+         *
+         * @var int $output
+         */
+        $output = 0;
+        
+        foreach ($this->values as $start) {
+            
+            /**
+             *
+             * @var int $product
+             */
+            $product = $start->value;
+            
+            foreach ($this->values as $next) {
+                
+                if ($next->sharesRow($start, $this->length) && $next->column > $start->column) {
+                    
+                    $product *= $next->value;
+                }
+            }
+            
+            $output = max($output, $product);
+        }
+        
+        return $output;
     }
 
     /**
      *
      * @return number
      */
-    protected function getMaxUpDiagonalProduct()
+    protected function getMaxMajorDiagonalProduct()
     {
-        return 1;
+        /**
+         *
+         * @var int $output
+         */
+        $output = 0;
+        
+        foreach ($this->values as $start) {
+            
+            /**
+             *
+             * @var int $product
+             */
+            $product = $start->value;
+            
+            foreach ($this->values as $next) {
+                
+                if ($next->sharesMajorDiagonal($start, $this->length) && $next->column > $start->column) {
+                    
+                    $product *= $next->value;
+                }
+            }
+            
+            $output = max($output, $product);
+        }
+        
+        return $output;
+    }
+
+    /**
+     *
+     * @return number
+     */
+    protected function getMaxMinorDiagonalProduct()
+    {
+        /**
+         *
+         * @var int $output
+         */
+        $output = 0;
+        
+        foreach ($this->values as $start) {
+            
+            /**
+             *
+             * @var int $product
+             */
+            $product = $start->value;
+            
+            foreach ($this->values as $next) {
+                
+                if ($next->sharesMinorDiagonal($start, $this->length) && $next->column > $start->column) {
+                    
+                    $product *= $next->value;
+                }
+            }
+            
+            $output = max($output, $product);
+        }
+        
+        return $output;
     }
 
     /**
@@ -86,7 +147,32 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
      */
     protected function getMaxVerticalProduct()
     {
-        return 1;
+        /**
+         *
+         * @var int $output
+         */
+        $output = 0;
+        
+        foreach ($this->values as $start) {
+            
+            /**
+             *
+             * @var int $product
+             */
+            $product = $start->value;
+            
+            foreach ($this->values as $next) {
+                
+                if ($next->sharesColumn($start, $this->length) && $next->row > $start->row) {
+                    
+                    $product *= $next->value;
+                }
+            }
+            
+            $output = max($output, $product);
+        }
+        
+        return $output;
     }
 
     /**
@@ -99,13 +185,13 @@ class GreatestProductOfAdjacentNumbersOfLengthFor
          *
          * @var int $sum1
          */
-        $sum1 = $this->getMaxUpDiagonalProduct();
+        $sum1 = $this->getMaxMajorDiagonalProduct();
         
         /**
          *
          * @var int $sum2
          */
-        $sum2 = $this->getMaxDownDiagonalProduct();
+        $sum2 = $this->getMaxMinorDiagonalProduct();
         
         /**
          *

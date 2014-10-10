@@ -17,6 +17,6 @@ class GreatestProductOfAdjacentNumbersOfLengthForTest extends PHPUnit_Framework_
 
     public function testConfirmOutputMatchesKnownResult()
     {
-        $this->assertSame('1', strval(new GreatestProductOfAdjacentNumbersOfLengthFor(1, self::TEST_GRID)));
+        $this->assertSame('72', strval(new GreatestProductOfAdjacentNumbersOfLengthFor(1, self::TEST_GRID)));
     }
 }
