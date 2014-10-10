@@ -2,7 +2,7 @@
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-eleven-to-twenty/GreatestProductOfAdjacentNumbersOfLengthFor.php</file>
+			<file>problems-eleven-to-twenty/GridEntryTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>
