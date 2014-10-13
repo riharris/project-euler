@@ -21,17 +21,7 @@ class TriangleNumberAtIndex
      */
     public function __construct($index)
     {
-        $total = 1;
-        
-        if ($index > 1) {
-            
-            for ($i = 2; $i <= $index; $i ++) {
-                
-                $total += $i;
-            }
-        }
-        
-        $this->number = new Number($total);
+        $this->number = new Number(($index * ($index + 1)) / 2);
     }
 
     public function __toString()
