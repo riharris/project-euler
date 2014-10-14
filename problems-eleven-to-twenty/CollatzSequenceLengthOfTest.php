@@ -13,6 +13,6 @@ class CollatzSequenceLengthOfTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmLengthMatchesExpectedForKnownSequence()
     {
-        $this->assertSame('', strval(new CollatzSequenceLengthOf(new Number(13))));
+        $this->assertSame('9', strval(new CollatzSequenceLengthOf(new Number(13))));
     }
 }
