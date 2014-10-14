@@ -23,4 +23,11 @@ class LongestCollatzSequenceStartNumberBelowLimitTest extends PHPUnit_Framework_
         
         $this->assertSame('3', strval(new LongestCollatzSequenceStartNumberBelowLimit(5)));
     }
+    
+    public function testConfirmOutputMatchesExpectedForUnknownRange()
+    {
+        $this->markTestSkipped('Solution for problem fourteen');
+    
+        $this->assertSame('837799', strval(new LongestCollatzSequenceStartNumberBelowLimit(1000000)));
+    }
 }
