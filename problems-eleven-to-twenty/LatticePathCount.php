@@ -15,8 +15,14 @@ include_once 'LatticeTopRightVertex.php';
 class LatticePathCount extends AbstractIterator
 {
 
+    /**
+     * @param int $scale
+     */
     public function __construct($scale)
     {
+        /**
+         * @var int $index
+         */
         $index = 0;
         
         /**
@@ -32,10 +38,10 @@ class LatticePathCount extends AbstractIterator
                 if ($x > 0 && $y > 0) {
                     
                     $vertices[] = new LatticeTopLeftVertex($index, $scale);
-                } elseif ($x > 0 && $y == 0) {
+                } elseif ($x > 0) {
                     
                     $vertices[] = new LatticeTopRightVertex($index, $scale);
-                } elseif ($x == 0 && $y > 0) {
+                } elseif ($y > 0) {
                     
                     $vertices[] = new LatticeBottomLeftVertex($index, $scale);
                 } else {
@@ -74,7 +80,7 @@ class LatticePathCount extends AbstractIterator
         
         foreach ($paths as $path) {
             
-            if ($path->hasEndIndex(8)) {
+            if ($path->hasEndIndex($index - 1)) {
                 
                 $values[] = $path;
             }
