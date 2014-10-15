@@ -1,7 +1,10 @@
 <?php
 include_once 'AbstractIterator.php';
 include_once 'LatticePath.php';
-include_once 'LatticeVertex.php';
+include_once 'LatticeBottomLeftVertex.php';
+include_once 'LatticeBottomRightVertex.php';
+include_once 'LatticeTopLeftVertex.php';
+include_once 'LatticeTopRightVertex.php';
 
 /**
  * Contains the LatticePathCount class
@@ -15,34 +18,15 @@ class LatticePathCount extends AbstractIterator
     public function __construct($scale)
     {
         $vertices = array(
-            new LatticeVertex(0, array(
-                1,
-                3
-            )),
-            new LatticeVertex(1, array(
-                2,
-                4
-            )),
-            new LatticeVertex(2, array(
-                5
-            )),
-            new LatticeVertex(3, array(
-                4,
-                6
-            )),
-            new LatticeVertex(4, array(
-                5,
-                7
-            )),
-            new LatticeVertex(5, array(
-                8
-            )),
-            new LatticeVertex(6, array(
-                7
-            )),
-            new LatticeVertex(7, array(
-                8
-            ))
+            new LatticeTopLeftVertex(0, $scale),
+            new LatticeTopLeftVertex(1, $scale),
+            new LatticeTopRightVertex(2, $scale),
+            new LatticeTopLeftVertex(3, $scale),
+            new LatticeTopLeftVertex(4, $scale),
+            new LatticeTopRightVertex(5, $scale),
+            new LatticeBottomLeftVertex(6, $scale),
+            new LatticeBottomLeftVertex(7, $scale),
+            new LatticeBottomRightVertex(8, $scale)
         );
         
         /**
@@ -73,7 +57,7 @@ class LatticePathCount extends AbstractIterator
         
         foreach ($paths as $path) {
             
-            if ($path->hasEndIndex(7)) {
+            if ($path->hasEndIndex(8)) {
                 
                 $values[] = $path;
             }

@@ -15,6 +15,6 @@ class LatticePathCountTest extends PHPUnit_Framework_TestCase
     {
         $fixture = new LatticePathCount(2);
         
-        $this->assertSame(2, count(iterator_to_array($fixture)));
+        $this->assertSame(6, count(iterator_to_array($fixture)));
     }
 }

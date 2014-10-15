@@ -12,6 +12,12 @@ class LatticePath
 
     /**
      *
+     * @var string
+     */
+    protected $path = '';
+
+    /**
+     *
      * @var LatticeVertex[]
      */
     protected $vertices = array();
@@ -35,19 +41,7 @@ class LatticePath
      */
     public function __toString()
     {
-        
-        /**
-         *
-         * @var string $output
-         */
-        $output = '';
-        
-        foreach ($this->vertices as $vertex) {
-            
-            $output .= (strlen($output)) ? sprintf('-%d', $vertex->getIndex()) : sprintf('%d', $vertex->getIndex());
-        }
-        
-        return $output;
+        return $this->path;
     }
 
     /**
@@ -58,6 +52,7 @@ class LatticePath
     public function append(LatticeVertex $vertex)
     {
         $this->vertices[] = $vertex;
+        $this->refreshPath();
         return $this;
     }
 
@@ -92,5 +87,18 @@ class LatticePath
         $test = end($this->vertices);
         
         return ($index == $test->getIndex()) ? true : false;
+    }
+
+    /**
+     * @return void 
+     */
+    protected function refreshPath()
+    {
+        $this->path = '';
+        
+        foreach ($this->vertices as $vertex) {
+            
+            $this->path .= (strlen($this->path)) ? sprintf('-%d', $vertex->getIndex()) : sprintf('%d', $vertex->getIndex());
+        }
     }
 }    
