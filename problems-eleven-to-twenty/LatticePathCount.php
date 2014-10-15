@@ -17,17 +17,34 @@ class LatticePathCount extends AbstractIterator
 
     public function __construct($scale)
     {
-        $vertices = array(
-            new LatticeTopLeftVertex(0, $scale),
-            new LatticeTopLeftVertex(1, $scale),
-            new LatticeTopRightVertex(2, $scale),
-            new LatticeTopLeftVertex(3, $scale),
-            new LatticeTopLeftVertex(4, $scale),
-            new LatticeTopRightVertex(5, $scale),
-            new LatticeBottomLeftVertex(6, $scale),
-            new LatticeBottomLeftVertex(7, $scale),
-            new LatticeBottomRightVertex(8, $scale)
-        );
+        $index = 0;
+        
+        /**
+         *
+         * @var LatticeVertex[] $vertices
+         */
+        $vertices = array();
+        
+        for ($x = $scale; $x >= 0; $x --) {
+            
+            for ($y = $scale; $y >= 0; $y --) {
+                
+                if ($x > 0 && $y > 0) {
+                    
+                    $vertices[] = new LatticeTopLeftVertex($index, $scale);
+                } elseif ($x > 0 && $y == 0) {
+                    
+                    $vertices[] = new LatticeTopRightVertex($index, $scale);
+                } elseif ($x == 0 && $y > 0) {
+                    
+                    $vertices[] = new LatticeBottomLeftVertex($index, $scale);
+                } else {
+                    
+                    $vertices[] = new LatticeBottomRightVertex($index, $scale);
+                }
+                $index ++;
+            }
+        }
         
         /**
          *
