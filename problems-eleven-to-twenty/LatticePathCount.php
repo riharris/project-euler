@@ -16,11 +16,13 @@ class LatticePathCount extends AbstractIterator
 {
 
     /**
-     * @param int $scale
+     *
+     * @param int $scale            
      */
     public function __construct($scale)
     {
         /**
+         *
          * @var int $index
          */
         $index = 0;
@@ -64,9 +66,12 @@ class LatticePathCount extends AbstractIterator
             
             $newPaths = array();
             
-            foreach ($paths as $path) {
+            foreach ($paths as $key => $path) {
                 
-                if ($path->continuesWith($vertex)) {
+                if ($this->isDeadEnd($path, $vertex, $scale)) {
+                    
+                    unset($paths[$key]);
+                } elseif ($path->continuesWith($vertex)) {
                     
                     $newPath = clone $path;
                     $newPaths[] = $newPath->append($vertex);
@@ -87,5 +92,17 @@ class LatticePathCount extends AbstractIterator
         }
         
         parent::__construct($values);
+    }
+
+    /**
+     *
+     * @param LatticePath $path            
+     * @param LatticeVertex $vertex            
+     * @param int $scale            
+     * @return boolean
+     */
+    protected function isDeadEnd($path, $vertex, $scale)
+    {
+        return $path->hasEndIndex($vertex->getIndex() - ($scale + $scale + 1));
     }
 }
