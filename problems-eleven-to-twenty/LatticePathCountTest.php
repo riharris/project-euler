@@ -14,31 +14,31 @@ class LatticePathCountTest extends PHPUnit_Framework_TestCase
     {
         $output[] = array(
             2,
-            6
+            '6'
         );
         $output[] = array(
             3,
-            20
+            '20'
         );
         $output[] = array(
             4,
-            70
+            '70'
         );
         $output[] = array(
             5,
-            252
+            '252'
         );
         $output[] = array(
             6,
-            924
+            '924'
         );
         $output[] = array(
             7,
-            3432
+            '3432'
         );
         $output[] = array(
             8,
-            12870
+            '12870'
         );
         
         return $output;
@@ -50,10 +50,12 @@ class LatticePathCountTest extends PHPUnit_Framework_TestCase
      * @param int $scale            
      * @param int $count            
      */
-    public function testConfirmOutputMatchesExpectedForKnownProblems($scale, $count)
+    public function testConfirmOutputMatchesExpectedForKnownProblem($scale, $count)
     {
         $fixture = new LatticePathCount($scale);
         
-        $this->assertSame($count, count(iterator_to_array($fixture)));
+        $this->assertSame($count, strval($fixture));
     }
+    
+    
 }

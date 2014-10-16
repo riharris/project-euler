@@ -1,5 +1,4 @@
 <?php
-include_once 'AbstractIterator.php';
 include_once 'LatticePath.php';
 include_once 'LatticeBottomLeftVertex.php';
 include_once 'LatticeBottomRightVertex.php';
@@ -12,8 +11,13 @@ include_once 'LatticeTopRightVertex.php';
  * @author Richard Harrison
  * @since 14 Oct 2014
  */
-class LatticePathCount extends AbstractIterator
+class LatticePathCount
 {
+    
+    /**
+     * @var int
+     */
+    protected $count = 0;
 
     /**
      *
@@ -74,24 +78,29 @@ class LatticePathCount extends AbstractIterator
                 } elseif ($path->continuesWith($vertex)) {
                     
                     $newPath = clone $path;
-                    $newPaths[] = $newPath->append($vertex);
+                    
+                    if ($newPath->append($vertex)->hasEndIndex($index - 1)) {
+                        
+                        $this->count++;
+                        
+                    } else {
+                        
+                        $newPaths[] = $newPath;
+                    }
+                    
                 }
             }
             
             $paths = array_merge($paths, $newPaths);
         }
+    }
+    
+    /**
+     * @return string
+     */
+    public function __toString() {
         
-        $values = array();
-        
-        foreach ($paths as $path) {
-            
-            if ($path->hasEndIndex($index - 1)) {
-                
-                $values[] = $path;
-            }
-        }
-        
-        parent::__construct($values);
+        return strval($this->count);
     }
 
     /**
