@@ -4,24 +4,56 @@ include_once 'LatticePathCount.php';
 /**
  * Contains the LatticePathCountTest class
  *
- * @author Richard Harrison <riharrison@estee-lauder.co.uk>
- * @copyright Estee Lauder Companies Ltd. 2014
+ * @author Richard Harrison
  * @since 14 Oct 2014
  */
 class LatticePathCountTest extends PHPUnit_Framework_TestCase
 {
 
-    public function testConfirmOutputMatchesExpectedForKnownProblem()
+    public function dataExpected()
     {
-        $fixture = new LatticePathCount(2);
+        $output[] = array(
+            2,
+            6
+        );
+        $output[] = array(
+            3,
+            20
+        );
+        $output[] = array(
+            4,
+            70
+        );
+        $output[] = array(
+            5,
+            252
+        );
+        $output[] = array(
+            6,
+            924
+        );
+        $output[] = array(
+            7,
+            3432
+        );
+        $output[] = array(
+            8,
+            12870
+        );
         
-        $this->assertSame(6, count(iterator_to_array($fixture)));
+        return $output;
     }
-    
-    public function testConfirmOutputMatchesExpectedForUnknownProblem()
+
+    /**
+     * @dataProvider dataExpected
+     * 
+     * @param int $scale            
+     * @param int $count            
+     */
+    public function testConfirmOutputMatchesExpectedForKnownProblems($scale, $count)
     {
-        $fixture = new LatticePathCount(20);
-    
-        $this->assertSame(6, count(iterator_to_array($fixture)));
+        $fixture = new LatticePathCount($scale);
+        
+        $this->assertSame($count, count(iterator_to_array($fixture)));
     }
 }
