@@ -13,8 +13,9 @@ include_once 'LatticeTopRightVertex.php';
  */
 class LatticePathCount
 {
-    
+
     /**
+     *
      * @var int
      */
     protected $count = 0;
@@ -41,7 +42,17 @@ class LatticePathCount
             
             for ($y = $scale; $y >= 0; $y --) {
                 
-                if ($x > 0 && $y > 0) {
+                if ($y == $scale) {
+                    
+                    if ($index == 0) {
+                        //define connections in one direction only as the others are a mirror image
+                        $vertices[] = new LatticeVertex(0, array(
+                            1
+                        ));
+                    } else {
+                        // don't add vertex
+                    }
+                } elseif ($x > 0 && $y > 0) {
                     
                     $vertices[] = new LatticeTopLeftVertex($index, $scale);
                 } elseif ($x > 0) {
@@ -81,26 +92,25 @@ class LatticePathCount
                     
                     if ($newPath->append($vertex)->hasEndIndex($index - 1)) {
                         
-                        $this->count++;
-                        
+                        $this->count ++;
                     } else {
                         
                         $newPaths[] = $newPath;
                     }
-                    
                 }
             }
             
             $paths = array_merge($paths, $newPaths);
         }
     }
-    
+
     /**
+     *
      * @return string
      */
-    public function __toString() {
-        
-        return strval($this->count);
+    public function __toString()
+    {
+        return strval(2 * $this->count);
     }
 
     /**
