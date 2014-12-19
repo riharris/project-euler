@@ -2,6 +2,8 @@
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
+			<file>problems-eleven-to-twenty/FactorialTest.php</file>
+			<file>problems-eleven-to-twenty/BinomialCoefficientTest.php</file>
 			<file>problems-eleven-to-twenty/LatticePathCountTest.php</file>
 		</testsuite>
 	</testsuites>

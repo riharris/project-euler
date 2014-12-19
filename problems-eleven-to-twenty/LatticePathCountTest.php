@@ -40,13 +40,17 @@ class LatticePathCountTest extends PHPUnit_Framework_TestCase
             8,
             '12870'
         );
+        $output[] = array(
+            20,
+            '137846528820'
+        );
         
         return $output;
     }
 
     /**
      * @dataProvider dataExpected
-     * 
+     *
      * @param int $scale            
      * @param int $count            
      */
@@ -56,6 +60,4 @@ class LatticePathCountTest extends PHPUnit_Framework_TestCase
         
         $this->assertSame($count, strval($fixture));
     }
-    
-    
 }

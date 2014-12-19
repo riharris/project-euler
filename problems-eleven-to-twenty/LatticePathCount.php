@@ -1,9 +1,5 @@
 <?php
-include_once 'LatticePath.php';
-include_once 'LatticeBottomLeftVertex.php';
-include_once 'LatticeBottomRightVertex.php';
-include_once 'LatticeTopLeftVertex.php';
-include_once 'LatticeTopRightVertex.php';
+include_once 'BinomialCoefficient.php';
 
 /**
  * Contains the LatticePathCount class
@@ -16,9 +12,9 @@ class LatticePathCount
 
     /**
      *
-     * @var int
+     * @var string
      */
-    protected $count = 0;
+    protected $count;
 
     /**
      *
@@ -27,81 +23,11 @@ class LatticePathCount
     public function __construct($scale)
     {
         /**
+         * http://mathworld.wolfram.com/BinomialCoefficient.html
          *
-         * @var int $index
+         * The number of lattice paths from the origin (0,0) to a point (a,b) is the binomial coefficient (a+b; a) (Hilton and Pedersen 1991)
          */
-        $index = 0;
-        
-        /**
-         *
-         * @var LatticeVertex[] $vertices
-         */
-        $vertices = array();
-        
-        for ($x = $scale; $x >= 0; $x --) {
-            
-            for ($y = $scale; $y >= 0; $y --) {
-                
-                if ($y == $scale) {
-                    
-                    if ($index == 0) {
-                        //define connections in one direction only as the others are a mirror image
-                        $vertices[] = new LatticeVertex(0, array(
-                            1
-                        ));
-                    } else {
-                        // don't add vertex
-                    }
-                } elseif ($x > 0 && $y > 0) {
-                    
-                    $vertices[] = new LatticeTopLeftVertex($index, $scale);
-                } elseif ($x > 0) {
-                    
-                    $vertices[] = new LatticeTopRightVertex($index, $scale);
-                } elseif ($y > 0) {
-                    
-                    $vertices[] = new LatticeBottomLeftVertex($index, $scale);
-                } else {
-                    
-                    $vertices[] = new LatticeBottomRightVertex($index, $scale);
-                }
-                $index ++;
-            }
-        }
-        
-        /**
-         *
-         * @var LatticePath[] $paths
-         */
-        $paths = array(
-            new LatticePath(array_shift($vertices))
-        );
-        
-        foreach ($vertices as $vertex) {
-            
-            $newPaths = array();
-            
-            foreach ($paths as $key => $path) {
-                
-                if ($this->isDeadEnd($path, $vertex, $scale)) {
-                    
-                    unset($paths[$key]);
-                } elseif ($path->continuesWith($vertex)) {
-                    
-                    $newPath = clone $path;
-                    
-                    if ($newPath->append($vertex)->hasEndIndex($index - 1)) {
-                        
-                        $this->count ++;
-                    } else {
-                        
-                        $newPaths[] = $newPath;
-                    }
-                }
-            }
-            
-            $paths = array_merge($paths, $newPaths);
-        }
+        $this->count = strval(new BinomialCoefficient($scale, $scale + $scale));
     }
 
     /**
@@ -110,18 +36,6 @@ class LatticePathCount
      */
     public function __toString()
     {
-        return strval(2 * $this->count);
-    }
-
-    /**
-     *
-     * @param LatticePath $path            
-     * @param LatticeVertex $vertex            
-     * @param int $scale            
-     * @return boolean
-     */
-    protected function isDeadEnd($path, $vertex, $scale)
-    {
-        return $path->hasEndIndex($vertex->getIndex() - ($scale + $scale + 1));
+        return $this->count;
     }
 }
