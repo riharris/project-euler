@@ -1,10 +1,9 @@
-<phpunit bootstrap="./bootstrap.php" colors="true"
+<phpunit bootstrap="./bootstrap-testing.php" colors="true"
 	stopOnFailure="true">
 	<testsuites>
 		<testsuite>
-			<file>problems-eleven-to-twenty/FactorialTest.php</file>
-			<file>problems-eleven-to-twenty/BinomialCoefficientTest.php</file>
-			<file>problems-eleven-to-twenty/LatticePathCountTest.php</file>
+			<directory>library-tests</directory>
+			<directory>problems</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
