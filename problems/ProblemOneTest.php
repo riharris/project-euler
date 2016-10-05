@@ -1,4 +1,5 @@
 <?php
+use Euler\Range;
 
 /**
  * Contains the MultiplesOfToTest class
@@ -9,6 +10,15 @@
  */
 class ProblemOneTest extends PHPUnit_Framework_TestCase {
 	function testConfirmOutputMatchesExpected() {
-		$this->assertSame ( 233168, array_sum ( array_unique ( array_merge ( iterator_to_array ( new Euler\MultiplesOfTo ( 3, 1000 ) ), iterator_to_array ( new Euler\MultiplesOfTo ( 5, 1000 ) ) ) ) ) );
+		$this->assertSame ( 233168, $this->sum ( (new Range ( 3, 999 ))->forValuesMatching ( function ($i) {
+			return (($i % 3) == 0);
+		} ) ) + $this->sum ( (new Range ( 5, 999 ))->forValuesMatching ( function ($i) {
+			return (($i % 5) == 0);
+		} ) ) - $this->sum ( (new Range ( 15, 999 ))->forValuesMatching ( function ($i) {
+			return (($i % 15) == 0);
+		} ) ) );
+	}
+	function sum(Range $range) {
+		return $range->sum ();
 	}
 }
