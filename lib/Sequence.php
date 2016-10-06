@@ -22,9 +22,14 @@ class Sequence {
 		$this->pattern = $pattern;
 		return $this;
 	}
+	public function generate($start, $end) {
+		while ( $start <= $end ) {
+			yield $start ++;
+		}
+	}
 	public function sum() {
 		$output = 0;
-		for($i = $this->start; $i <= $this->end; $i ++) {
+		foreach ( $this->generate ( $this->start, $this->end ) as $i ) {
 			if (call_user_func ( $this->pattern, $i )) {
 				$output += $i;
 			}
