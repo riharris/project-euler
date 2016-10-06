@@ -22,11 +22,6 @@ class Sequence {
 		$this->pattern = $pattern;
 		return $this;
 	}
-	public function generate($start, $end) {
-		while ( $start <= $end ) {
-			yield $start ++;
-		}
-	}
 	public function sum() {
 		$output = 0;
 		foreach ( $this->generate ( $this->start, $this->end ) as $i ) {
@@ -35,5 +30,10 @@ class Sequence {
 			}
 		}
 		return $output;
+	}
+	protected function generate($start, $end) {
+		while ( $start <= $end ) {
+			yield $start ++;
+		}
 	}
 }
