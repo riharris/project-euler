@@ -8,17 +8,42 @@ use Euler\Sequence;
  * @copyright Estee Lauder Companies Ltd. 2013
  * @since 1 Nov 2013
  */
-class ProblemOneTest extends PHPUnit_Framework_TestCase {
-	function testConfirmOutputMatchesExpected() {
-		$this->assertSame ( 233168, $this->sum ( (new Sequence ( 3, 999 ))->forValuesMatching ( function ($i) {
-			return (($i % 3) == 0);
-		} ) ) + $this->sum ( (new Sequence ( 5, 999 ))->forValuesMatching ( function ($i) {
-			return (($i % 5) == 0);
-		} ) ) - $this->sum ( (new Sequence ( 15, 999 ))->forValuesMatching ( function ($i) {
-			return (($i % 15) == 0);
-		} ) ) );
-	}
-	function sum(Sequence $range) {
-		return $range->sum ();
-	}
+class ProblemOneTest extends PHPUnit_Framework_TestCase
+{
+
+    function testConfirmOutputMatchesExpected()
+    {
+        $sequence = new Sequence(3, 999);
+        
+        $this->assertSame(233168, $this->sum($sequence->forValuesMatching(array(
+            $this,
+            'isMultipleOfThree'
+        ))) + $this->sum($sequence->forValuesMatching(array(
+            $this,
+            'isMultipleOfFive'
+        ))) - $this->sum($sequence->forValuesMatching(array(
+            $this,
+            'isMultipleOfFifteen'
+        ))));
+    }
+
+    function isMultipleOfThree($i)
+    {
+        return (($i % 3) == 0);
+    }
+
+    function isMultipleOfFive($i)
+    {
+        return (($i % 5) == 0);
+    }
+
+    function isMultipleOfFifteen($i)
+    {
+        return (($i % 15) == 0);
+    }
+
+    function sum(Sequence $range)
+    {
+        return $range->sum();
+    }
 }
