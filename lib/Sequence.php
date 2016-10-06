@@ -2,7 +2,7 @@
 
 namespace Euler;
 
-class Range {
+class Sequence {
 	protected $end;
 	protected $pattern;
 	protected $start;
