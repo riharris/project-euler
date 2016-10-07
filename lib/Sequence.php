@@ -24,6 +24,15 @@ class Sequence
         $this->start = $start;
     }
 
+    public function first()
+    {
+        foreach ($this->generate($this->start, $this->end) as $i) {
+            if (call_user_func($this->pattern, $i)) {
+                return $i;
+            }
+        }
+    }
+
     public function forValuesMatching(callable $pattern)
     {
         $this->pattern = $pattern;
