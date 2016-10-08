@@ -24,6 +24,17 @@ class Sequence
         $this->start = $start;
     }
 
+    public function count()
+    {
+        $output = 0;
+        foreach ($this->generate($this->start, $this->end) as $i) {
+            if (call_user_func($this->pattern, $i)) {
+                $output ++;
+            }
+        }
+        return $output;
+    }
+
     public function first()
     {
         foreach ($this->generate($this->start, $this->end) as $i) {
