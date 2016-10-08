@@ -6,9 +6,9 @@ class ProblemThreeTest extends PHPUnit_Framework_TestCase
 
     public function testDescendingSequence()
     {
-        $fixture = new DescendingSequence(10, 6);
+        $fixture = new DescendingSequence(4,2);
         
-        $this->assertSame(0, $fixture->forValuesMatching(array(
+        $this->assertSame(3, $fixture->forValuesMatching(array(
             $this,
             'isOdd'
         ))
