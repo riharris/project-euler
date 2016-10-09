@@ -24,6 +24,17 @@ class Sequence
         $this->start = $start;
     }
 
+    public function concat()
+    {
+        $output = '';
+        foreach ($this->generate($this->start, $this->end) as $i) {
+            if (call_user_func($this->pattern, $i)) {
+                $output .= (strlen($output)) ? ',' . $i : $i;
+            }
+        }
+        return $output;
+    }
+
     public function count()
     {
         $output = 0;
