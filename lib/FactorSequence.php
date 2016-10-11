@@ -14,13 +14,24 @@ class FactorSequence extends Sequence
 
     protected function generate($start, $end)
     {
+        $factors = array(
+            1
+        );
         yield 1;
-        while ($start <= $end) {
+        $max = (int) sqrt($this->number);
+        while ($start <= $max) {
             if ($this->number % $start == 0) {
+                array_unshift($factors, $start);
                 yield $start;
             }
             $start ++;
         }
-        yield $this->number;
+        
+        foreach ($factors as $factor) {
+            
+            if ($factor != $this->number / $factor) {
+                yield $this->number / $factor;
+            }
+        }
     }
 }

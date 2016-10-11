@@ -1,9 +1,10 @@
 <?php
 use Euler\DescendingSequence;
+use Euler\FactorSequence;
 
 class ProblemThreeTest extends PHPUnit_Framework_TestCase
 {
-
+    
     public function testDescendingSequence()
     {
         $fixture = new DescendingSequence(4,2);
