@@ -9,7 +9,7 @@ class FactorSequence extends Sequence
     public function __construct($number)
     {
         $this->number = $number;
-        parent::__construct(2, intval(ceil($number / 2)));
+        parent::__construct(2, (int) sqrt($number));
     }
 
     protected function generate($start, $end)
@@ -18,8 +18,7 @@ class FactorSequence extends Sequence
             1
         );
         yield 1;
-        $max = (int) sqrt($this->number);
-        while ($start <= $max) {
+        while ($start <= $end) {
             if ($this->number % $start == 0) {
                 array_unshift($factors, $start);
                 yield $start;
