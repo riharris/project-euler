@@ -1,23 +1,13 @@
 <?php
-use Euler\DescendingSequence;
-use Euler\FactorSequence;
+use Euler\PrimeFactorSequence;
 
 class ProblemThreeTest extends PHPUnit_Framework_TestCase
 {
-    
-    public function testDescendingSequence()
-    {
-        $fixture = new DescendingSequence(4,2);
-        
-        $this->assertSame(3, $fixture->forValuesMatching(array(
-            $this,
-            'isOdd'
-        ))
-            ->first());
-    }
 
-    public function isOdd($i)
+    public function testConfirmPrimeFactorSequenceMatchesExpected()
     {
-        return ($i % 2 == 1);
+        $fixture = new PrimeFactorSequence(600851475143);
+        
+        $this->assertSame('1,71,839,1471,6857,87625999,408464633,716151937,8462696833,600851475143', $fixture->concat());
     }
 }

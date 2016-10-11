@@ -19,7 +19,7 @@ class FactorSequence extends Sequence
         );
         yield 1;
         while ($start <= $end) {
-            if ($this->number % $start == 0) {
+            if ($this->isFactor($start)) {
                 array_unshift($factors, $start);
                 yield $start;
             }
@@ -32,5 +32,10 @@ class FactorSequence extends Sequence
                 yield $this->number / $factor;
             }
         }
+    }
+
+    protected function isFactor($start)
+    {
+        return ($this->number % $start == 0);
     }
 }
