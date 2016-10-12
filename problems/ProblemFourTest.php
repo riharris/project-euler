@@ -7,7 +7,7 @@ class ProblemFourTest extends PHPUnit_Framework_TestCase
 
     public function testConfirmOutputMatchesExpected()
     {
-        $fixture = new DescendingPalindromicSequence(999 * 999, 900 * 900);
+        $fixture = new DescendingPalindromicSequence(907000, 906600);
         
         $this->assertSame(906609, $fixture->forValuesMatching(array(
             $this,
