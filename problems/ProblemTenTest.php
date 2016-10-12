@@ -1,8 +1,8 @@
 <?php
-use Euler\Sequence;
 use Euler\PrimeFactorSequence;
+use Euler\Sequence;
 
-class ProblemSevenTest extends PHPUnit_Framework_TestCase
+class ProblemTenTest extends PHPUnit_Framework_TestCase
 {
 
     /**
@@ -10,13 +10,13 @@ class ProblemSevenTest extends PHPUnit_Framework_TestCase
      */
     public function testConfirmOutputMatchesExpected()
     {
-        $fixture = new Sequence(1, 105000);
+        $fixture = new Sequence(1, 1999999);
         
-        $this->assertSame(104743, $fixture->forValuesMatching(array(
+        $this->assertSame(142913828922, $fixture->forValuesMatching(array(
             $this,
             'isPrime'
         ))
-            ->valueAt(10001));
+            ->sum());
     }
 
     public function isPrime($number)
@@ -25,8 +25,17 @@ class ProblemSevenTest extends PHPUnit_Framework_TestCase
             return true;
         } elseif ($number % 2 == 0) {
             return false;
+        } elseif ($number == 3) {
+            return true;
+        } elseif ($number % 3 == 0) {
+            return false;
+        } elseif ($number == 5) {
+            return true;
+        } elseif ($number % 5 == 0) {
+            return false;
         } else {
             return ((new PrimeFactorSequence($number))->count() == 2);
         }
     }
 }
+
