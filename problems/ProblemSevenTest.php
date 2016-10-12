@@ -5,8 +5,12 @@ use Euler\PrimeFactorSequence;
 class ProblemSevenTest extends PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @group ignore
+     */
     public function testConfirmOutputMatchesExpected()
     {
+        $this->markTestSkipped();
         $fixture = new Sequence(1, 105000);
         
         $this->assertSame(104743, $fixture->forValuesMatching(array(

@@ -61,6 +61,17 @@ class Sequence
         return $this;
     }
 
+    public function max()
+    {
+        $output = 0;
+        foreach ($this->generate($this->start, $this->end) as $i) {
+            if (call_user_func($this->pattern, $i) && $i > $output) {
+                $output = $i;
+            }
+        }
+        return $output;
+    }
+
     public function sum()
     {
         $output = 0;
