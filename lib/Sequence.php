@@ -72,6 +72,19 @@ class Sequence
         return $output;
     }
 
+    public function valueAt($index)
+    {
+        $count = 0;
+        foreach ($this->generate($this->start, $this->end) as $i) {
+            if (call_user_func($this->pattern, $i)) {
+                $count ++;
+                if ($count == $index) {
+                    return $i;
+                }
+            }
+        }
+    }
+
     protected function generate($start, $end)
     {
         while ($start <= $end) {
